@@ -1,6 +1,5 @@
 # exercise 1
 
-i=1
 for i in range(1, 11):
     print(f"user {i}")
 
@@ -77,4 +76,3 @@ for i in reports:
     #when while condition is never met it goes on in a never ending loop.
     #Break is used to exit a loop or when a certain condition is met.
     #Continue is used to skip a certain iteration of a loop when a certain condition is met.
-    # Can you write a loop from a blank file without looking at an example? had a bit difficulty in understanding this question but to my understanding, i can write a loop 1st i'll put conditoin if length is notzero then i will proceed for the iteration.
