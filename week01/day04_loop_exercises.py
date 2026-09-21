@@ -67,3 +67,12 @@ for i in reports:
     if i == 0:
         continue
     print(f"{i}")
+
+    #we use for loop to iterate though list when items are known.
+    #we user while when a certain condition is met.
+    #counter is used to keep track of a loop or number and is  also used to control the loop to a certain number of iterations.
+    #accumulator is used to keep track of a toal or a sum of a certain value.
+    #when while condition is never met it goes on in a never ending loop.
+    #Break is used to exit a loop or when a certain condition is met.
+    #Continue is used to skip a certain iteration of a loop when a certain condition is met.
+    # Can you write a loop from a blank file without looking at an example? had a bit difficulty in understanding this question but to my understanding, i can write a loop 1st i'll put conditoin if length is notzero then i will proceed for the iteration.
