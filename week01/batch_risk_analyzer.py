@@ -8,7 +8,8 @@ total_risk_scores = 0
 average_risk_scores = 0
 high_risk_users = 0
 critical_users = 0
-Highest_risk_user = ""
+highest_risk_user = ""
+highest_score = 0
 
 print("=========== Risk Report ===========")
 
@@ -27,13 +28,16 @@ for user in users:
        high_risk_users += 1
     else:
        risk_level = "CRITICAL"
-       highest_risk_user = user["name"]
        critical_users += 1 
+    if risk_score > highest_score:
+        highest_score = risk_score
+        highest_risk_user = user["name"] 
     print(f"User: {user['name']}")
     print(f"Risk Score: {risk_score}")
     print(f"Risk Level: {risk_level} \n")
 
 
+highest_risk_user = user["name"]
 print(f"Total users: {len(users)}")
 print(f"High-risk Users: {high_risk_users}")
 print(f"Critical Users: {critical_users}")

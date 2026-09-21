@@ -19,19 +19,21 @@ for i in scores:
 # exercise 3
 
 reports = [2, 5, 12, 3, 18, 1, 22]
-sum = 0
+total_reports = 0
+scores = 0
 highest = 0
-lowest = 100
+lowest = reports[0]
 
 for i in reports:
-    sum = sum + i;
+    scores = scores + i;
+    total_reports += 1
     if i > highest:
         highest = i
     if i < lowest:
         lowest = i
 
-print(f"Total Reports: {len(reports)}")
-average = sum / len(reports);
+print(f"Total Reports: {total_reports}")
+average = scores / len(reports)
 print(f"Average: {round(average)}")
 print(f"Highest: {highest}")
 print(f"Lowest: {lowest}")
