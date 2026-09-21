@@ -1,0 +1,17 @@
+print(10 > 5)
+print(10 < 5)
+print(10 == 10)
+print(10 != 5)
+print(10 >= 10)
+print(10 <= 10)
+
+print("Hello" == "Hello")
+print("Hello" != "hello")
+print("Hello" > "hello")
+print("Hello" < "hello")
+print("Hello" >= "Hello")
+print("Hello" <= "Hello")
+
+print("difference bw '=' and '=='")
+print("= is used for assignment")
+print("== is used for comparison")

@@ -1,0 +1,13 @@
+username = input("Username: ")
+age = int(input("Age: "))
+reports = int(input("Number of reports: "))
+warning = int(input("Number of warnings: "))
+bans = int(input("Number of bans: "))
+
+risk_score = (reports * 2) + (warning * 5) + (bans * 10)
+print("User: ", username)
+print("Age: ", age)
+print("Reports: ", reports)
+print("Warnings: ", warning)
+print("Bans: ", bans)
+print("Risk Score: ", risk_score)
