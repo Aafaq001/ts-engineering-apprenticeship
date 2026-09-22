@@ -16,7 +16,6 @@ print("=========== Risk Report ===========")
 for user in users:
     risk_score = (user["reports"] * 1) + (user["warnings"] * 5) + (user["bans"] * 10)
     total_risk_scores += risk_score
-    average_risk_scores = round(total_risk_scores/len(users))
     risk_scores.append(risk_score)
     risk_level = ""
     if risk_score <= 25:
@@ -37,7 +36,7 @@ for user in users:
     print(f"Risk Level: {risk_level} \n")
 
 
-highest_risk_user = user["name"]
+average_risk_scores = round(total_risk_scores/len(users))
 print(f"Total users: {len(users)}")
 print(f"High-risk Users: {high_risk_users}")
 print(f"Critical Users: {critical_users}")
