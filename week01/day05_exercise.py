@@ -54,6 +54,7 @@ for key, value in user.items():
     print(f"{key}-> {value} \n")
 
 #Part 5 — Sets
+
 countries = [
     "Pakistan",
     "UAE",
@@ -74,7 +75,7 @@ print(f"Is Canada in the list? {'Canada' in unique_countries} \n")
 user_location = ("Pakistan", "Islamabad")
 
 print(f"Country: {user_location[0]}")
-print(f"City: {user_location[1]}")
+print(f"City: {user_location[1]} \n")
 
 #user_location[0] = "USA" 
 #print(f"Updated Country: {user_location[0]}") #threw error error because tuples are immutable
@@ -124,12 +125,12 @@ for logger in loggers:
         banned_users.append(logger['name'])
     
 
-    print(f"{logger['name']} -> {logger['country']} -> {logger['reports']}")
+    print(f"{logger['name']} -> {logger['country']} -> {logger['reports']} \n")
     
 #Part 8 — Filtering
 #Exercise 5
 
-print(f"users with reports more than 10: {high_reported_loggers}")
+print(f"users with reports more than 10: {high_reported_loggers} \n")
 
 
 #Exercise 6
