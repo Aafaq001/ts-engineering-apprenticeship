@@ -26,9 +26,7 @@ print(f"Last Element: {reports[-1]}")
 print(f"First Three Elements: {reports[ : 3]}")
 print(f"Last Three Elements: {reports[-3:]}")
 print(f"elements from index 2 through 5: {reports[2:6]}")
-for report in reports:
-    if report % 2 == 0:
-        print(f"Every 2nd element: {report}") #reports[::2] saw this logic later and understood it but i already had done this using loop
+print(f"Every 2nd element: {reports[::2]}") #reports[::2] saw this logic later and understood it but i already had done this using loop
 
 #Part 3 — Dictionaries
 #Exercise 03
@@ -114,14 +112,14 @@ no_reports = []
 print(f"Ali's name is: {loggers[0]['name']}")
 print(f"{loggers[1]['name']} lives in: {loggers[1]['country']}")
 print(f"{loggers[2]['name']} have {loggers[2]['reports']} reports.")
-print(f"Is Sara banned? { 'Yes' if loggers[1]['banned'] == True else 'No' }")
+print(f"Is Sara banned? { 'Yes' if loggers[1]['banned'] else 'No' }")
 
 for logger in loggers:
     if logger['reports'] > 10:
         high_reported_loggers.append(logger['name'])
-    elif logger['reports'] == 0:
+    if logger['reports'] == 0:
         no_reports.append(logger['name'])
-    if logger['banned'] == True:
+    if logger['banned']:
         banned_users.append(logger['name'])
     
 

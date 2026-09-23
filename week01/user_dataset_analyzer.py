@@ -132,11 +132,10 @@ for user in users:
         highest_reported["hrepreports"] = user["reports"]
     if user["country"] == 'Pakistan':
         usersfrmPak.append(user["username"])
-    if user["banned"] == True:
+    if user["banned"]:
         bannedUsers.append(user["username"])
     if user["reports"] == 0:
         userwnoReports.append(user["username"])
-    #userrisk.update(user)
     
     riskSummary.append((user["reports"] * 1) + (user["warnings"] * 5) + (user["bans"] * 10))
     
