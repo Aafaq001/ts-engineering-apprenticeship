@@ -8,7 +8,7 @@ def fizzbuzz(num:int) -> str:
     elif num%5 == 0:
             return "buzz"
     else:
-         return num
+         return str(num)
 
 #Palindrome number
 
@@ -17,10 +17,10 @@ def is_palindrome_string(num: int) -> bool:
     return str(num) == str(num)[::-1]
 
 for num in range(1,16):
-    palindrom_num = is_palindrome_string(num)
-    fizzbuzz_num = fizzbuzz(num)
-    print(f"{palindrom_num}")
-    print(f"{fizzbuzz_num}")
+    print(f"{fizzbuzz(num)}")
+
+for num in range(1,16):
+    print(f"{is_palindrome_string(num)}")
 
 #valid paranthesis
 
@@ -28,3 +28,10 @@ def is_valid_replace(s: str) -> bool:
     while "()" in s or "{}" in s or "[]" in s:
         s = s.replace("()", "").replace("{}", "").replace("[]", "")
     return s == ""
+
+print(is_valid_replace("()"))
+print(is_valid_replace("()[]{}"))
+print(is_valid_replace("{[]}"))
+print(is_valid_replace("(]"))
+print(is_valid_replace("([)]"))
+print(is_valid_replace("{"))

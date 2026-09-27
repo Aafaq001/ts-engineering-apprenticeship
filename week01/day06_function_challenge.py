@@ -123,11 +123,10 @@ users = [
     }
 ]
 
-risk_level_scores = []
 
-def calculate_score(reports: int, warnings: int, bans: int) -> str:
-    risk_score = reports + (warnings * 5) + (bans * 10)    
-    return classify_risk(risk_score)
+def calculate_score(reports: int, warnings: int, bans: int) -> int:
+    """Calculate and return the risk score."""
+    return reports + (warnings * 5) + (bans * 10)
 
 def classify_risk(risk_score: int) -> str:
     if risk_score <= 25:
@@ -139,16 +138,13 @@ def classify_risk(risk_score: int) -> str:
     else:
         return "Critical"
 
-
+def print_result(score: int, level: str) -> None:
+    """Print the risk score and risk level."""
+    print(f"Risk Score: {score}")
+    print(f"Risk Level: {level}")
 
 for user in users:
     score = calculate_score(user["reports"], user["warnings"], user["bans"])
-    risk_level_scores.append(score)
+    level = classify_risk(score)
+    print_result(score, level)
 
-low_count = risk_level_scores.count("Low")
-medium_count = risk_level_scores.count("Medium")
-high_count = risk_level_scores.count("High")
-critical_count = risk_level_scores.count("Critical")
-
-print(f"Reports Score: {risk_level_scores}")
-print(f"Low: {low_count} \nMedium: {medium_count}\nHigh: {high_count}\nCritical: {critical_count}")
