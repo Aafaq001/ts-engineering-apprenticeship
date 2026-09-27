@@ -155,20 +155,24 @@ def calculate_average_reports(total_reports, user_count):
 def classify_risk(score: int) -> str:
     """Take Risk Score and return severity level string without modifying globals."""
     if score <= 25:
+        risk_categories.append("LOW")
         return "LOW"
     elif score <= 50:
+        risk_categories.append("MEDIUM")
         return "MEDIUM"
     elif score <= 75:
+        risk_categories.append("HIGH")
         return "HIGH"
     else:
+        risk_categories.append("CRITICAL")
         return "CRITICAL"
 
 
 def calculate_risk(reports: int, warnings: int, bans: int) -> str:
     """Take reports, warnings, and bans of a user, calculate Risk score, and return category."""
     score = reports + (warnings * 5) + (bans * 10)
-    risk_scores.append(score)
-    return classify_risk(score)
+    classify_risk(score)
+    return risk_scores.append(score)
 
 
 highest_reported_users = None
@@ -187,6 +191,7 @@ for user in users:
     risk_categories.append(category)
 
 # Count risk levels cleanly without mutating global variables inside functions
+
 low_count = risk_categories.count("LOW")
 medium_count = risk_categories.count("MEDIUM")
 high_count = risk_categories.count("HIGH")

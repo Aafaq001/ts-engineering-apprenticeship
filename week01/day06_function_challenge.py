@@ -125,7 +125,7 @@ users = [
 
 risk_level_scores = []
 
-def calculate_score(reports: int, warnings: int, bans: int) -> int:
+def calculate_score(reports: int, warnings: int, bans: int) -> str:
     risk_score = reports + (warnings * 5) + (bans * 10)    
     return classify_risk(risk_score)
 
