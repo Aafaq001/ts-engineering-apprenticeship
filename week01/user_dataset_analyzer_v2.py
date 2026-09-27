@@ -111,25 +111,25 @@ users = [
 
 report_threshold = []
 risk_scores = []
-low_count = medium_count = high_count = critical_count = 0
+risk_categories = []
 banned_users = []
 users_frm_pak = []
 countries = []
 
 
-def get_users_above_report_threshold(reports, name):
-    if reports > 10:
-        report_threshold.append(name)
+def get_users_above_report_threshold(reports, name, threshold=10):
+    if reports > threshold:
+        return name
 
 
 def get_banned_users(name, banned):
     if banned:
-        banned_users.append(name)
+        return name
 
 
 def get_users_from_country(country, name):
     if country == "Pakistan":
-        users_frm_pak.append(name)
+        return name
 
 
 def get_highest_reported_user(user, current_highest):
@@ -152,23 +152,23 @@ def calculate_average_reports(total_reports, user_count):
     return total_reports / user_count if user_count > 0 else 0
 
 
-def calculate_risk(reports: int, warnings: int, bans: int):
-    """Take reports, warnings, and bans of a user and calculate Risk score"""
+def classify_risk(score: int) -> str:
+    """Take Risk Score and return severity level string without modifying globals."""
+    if score <= 25:
+        return "LOW"
+    elif score <= 50:
+        return "MEDIUM"
+    elif score <= 75:
+        return "HIGH"
+    else:
+        return "CRITICAL"
+
+
+def calculate_risk(reports: int, warnings: int, bans: int) -> str:
+    """Take reports, warnings, and bans of a user, calculate Risk score, and return category."""
     score = reports + (warnings * 5) + (bans * 10)
     risk_scores.append(score)
-
-
-def classify_risk(score: int):
-    """Take Risk Score and classify the severity/risk level"""
-    global low_count, medium_count, high_count, critical_count
-    if score <= 25:
-        low_count += 1
-    elif score <= 50:
-        medium_count += 1
-    elif score <= 75:
-        high_count += 1
-    else:
-        critical_count += 1
+    return classify_risk(score)
 
 
 highest_reported_users = None
@@ -177,26 +177,32 @@ total_reports = 0
 # Process users in loop
 for user in users:
     countries.append(user["country"])
-    get_users_above_report_threshold(user["reports"], user["username"])
-    get_banned_users(user["username"], user["banned"])
-    get_users_from_country(user["country"], user["username"])
+    report_threshold.append(get_users_above_report_threshold(user["reports"], user["username"], 10))
+    banned_users.append(get_banned_users(user["username"], user["banned"]))
+    users_frm_pak.append(get_users_from_country(user["country"], user["username"]))
     highest_reported_users = get_highest_reported_user(user, highest_reported_users)
     total_reports = calculate_total_reports(total_reports, user["reports"])
-    calculate_risk(user["reports"], user["warnings"], user["bans"])
+    
+    category = calculate_risk(user["reports"], user["warnings"], user["bans"])
+    risk_categories.append(category)
+
+# Count risk levels cleanly without mutating global variables inside functions
+low_count = risk_categories.count("LOW")
+medium_count = risk_categories.count("MEDIUM")
+high_count = risk_categories.count("HIGH")
+critical_count = risk_categories.count("CRITICAL")
 
 # Post-loop calculations
 average_reports = calculate_average_reports(total_reports, len(users))
 
-for score in risk_scores:
-    classify_risk(score)
 
 
 # Print Output
 print(f"Total Users: {len(users)}")
 print(f"Unique Countries: {len(set(countries))}")
-print(f"Users with more than 10 reports: {report_threshold}")
-print(f"Banned Users: {banned_users}")
-print(f"Users from Pakistan: {users_frm_pak}")
+print(f"Users with more than 10 reports: {list(filter(None, report_threshold))}")
+print(f"Banned Users: {list(filter(None, banned_users))}")
+print(f"Users from Pakistan: {list(filter(None, users_frm_pak))}")
 
 for u in highest_reported_users:
     print(f"Highest reported user: {u['username']}")

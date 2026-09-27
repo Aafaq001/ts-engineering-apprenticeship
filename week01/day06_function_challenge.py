@@ -1,0 +1,154 @@
+users = [
+    {
+        "id": 1,
+        "username": "alex_dev",
+        "country": "Canada",
+        "reports": 4,
+        "warnings": 2,
+        "bans": 1,
+        "banned": False
+    },
+    {
+        "id": 2,
+        "username": "samira_tech",
+        "country": "Pakistan",
+        "reports": 8,
+        "warnings": 4,
+        "bans": 0,
+        "banned": False
+    },
+    {
+        "id": 3,
+        "username": "mike_codes",
+        "country": "United States",
+        "reports": 16,
+        "warnings": 6,
+        "bans": 2,
+        "banned": True
+    },
+    {
+        "id": 4,
+        "username": "luna_writer",
+        "country": "United Kingdom",
+        "reports": 0,
+        "warnings": 0,
+        "bans": 0,
+        "banned": False
+    },
+    {
+        "id": 5,
+        "username": "daniel_x",
+        "country": "Germany",
+        "reports": 16,
+        "warnings": 6,
+        "bans": 2,
+        "banned": False
+    },
+    {
+        "id": 6,
+        "username": "noor_dev",
+        "country": "Pakistan",
+        "reports": 18,
+        "warnings": 8,
+        "bans": 4,
+        "banned": True
+    },
+    {
+        "id": 7,
+        "username": "emma_designs",
+        "country": "Australia",
+        "reports": 3,
+        "warnings": 1,
+        "bans": 0,
+        "banned": False
+    },
+    {
+        "id": 8,
+        "username": "ryan_tech",
+        "country": "United States",
+        "reports": 12,
+        "warnings": 4,
+        "bans": 2,
+        "banned": True
+    },
+    {
+        "id": 9,
+        "username": "sofia_codes",
+        "country": "Spain",
+        "reports": 13,
+        "warnings": 3,
+        "bans": 1,
+        "banned": False
+    },
+    {
+        "id": 10,
+        "username": "omar_builder",
+        "country": "United Arab Emirates",
+        "reports": 14,
+        "warnings": 4,
+        "bans": 2,
+        "banned": True
+    },
+    {
+        "id": 11,
+        "username": "mia_python",
+        "country": "France",
+        "reports": 4,
+        "warnings": 1,
+        "bans": 0,
+        "banned": False
+    },
+    {
+        "id": 12,
+        "username": "ethan_dev",
+        "country": "Japan",
+        "reports": 18,
+        "warnings": 6,
+        "bans": 2,
+        "banned": True
+    },
+    {   
+        "id": 13,
+        "username": "user_a",
+        "reports": 20,
+        "warnings": 2,
+        "bans": 0
+    },
+    {   
+        "id": 14,
+        "username": "user_b",
+        "reports": 5,
+        "warnings": 0,
+        "bans": 0
+    }
+]
+
+risk_level_scores = []
+
+def calculate_score(reports: int, warnings: int, bans: int) -> int:
+    risk_score = reports + (warnings * 5) + (bans * 10)    
+    return classify_risk(risk_score)
+
+def classify_risk(risk_score: int) -> str:
+    if risk_score <= 25:
+        return "Low"
+    elif risk_score <= 50:
+        return "Medium"
+    elif risk_score <= 75:
+        return "High"
+    else:
+        return "Critical"
+
+
+
+for user in users:
+    score = calculate_score(user["reports"], user["warnings"], user["bans"])
+    risk_level_scores.append(score)
+
+low_count = risk_level_scores.count("Low")
+medium_count = risk_level_scores.count("Medium")
+high_count = risk_level_scores.count("High")
+critical_count = risk_level_scores.count("Critical")
+
+print(f"Reports Score: {risk_level_scores}")
+print(f"Low: {low_count} \nMedium: {medium_count}\nHigh: {high_count}\nCritical: {critical_count}")
