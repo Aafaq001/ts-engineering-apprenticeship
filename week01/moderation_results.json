@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "username": "alex_dev",
+        "risk_score": 24,
+        "risk_level": "LOW"
+    },
+    {
+        "id": 2,
+        "username": "samira_tech",
+        "risk_score": 28,
+        "risk_level": "MEDIUM"
+    },
+    {
+        "id": 3,
+        "username": "mike_codes",
+        "risk_score": 66,
+        "risk_level": "HIGH"
+    },
+    {
+        "id": 4,
+        "username": "luna_writer",
+        "risk_score": 0,
+        "risk_level": "LOW"
+    },
+    {
+        "id": 5,
+        "username": "daniel_x",
+        "risk_score": 66,
+        "risk_level": "HIGH"
+    },
+    {
+        "id": 6,
+        "username": "noor_dev",
+        "risk_score": 98,
+        "risk_level": "CRITICAL"
+    },
+    {
+        "id": 7,
+        "username": "emma_designs",
+        "risk_score": 8,
+        "risk_level": "LOW"
+    },
+    {
+        "id": 8,
+        "username": "ryan_tech",
+        "risk_score": 52,
+        "risk_level": "HIGH"
+    },
+    {
+        "id": 9,
+        "username": "sofia_codes",
+        "risk_score": 38,
+        "risk_level": "MEDIUM"
+    },
+    {
+        "id": 10,
+        "username": "omar_builder",
+        "risk_score": 54,
+        "risk_level": "HIGH"
+    },
+    {
+        "id": 11,
+        "username": "mia_python",
+        "risk_score": 9,
+        "risk_level": "LOW"
+    },
+    {
+        "id": 12,
+        "username": "ethan_dev",
+        "risk_score": 68,
+        "risk_level": "HIGH"
+    }
+]
