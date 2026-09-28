@@ -1,9 +1,11 @@
-def calculate_risk(warnings, reports, bans):
-    # Ensure values are not negative
+def calculate_risk(warnings, reports, bans):        
+    return reports + (warnings * 5) + (bans * 10)
+
+def validate_user_data(reports, warnings, bans):
     if warnings < 0 or reports < 0 or bans < 0:
         raise ValueError("Values cannot be negative.")
-        
-    return reports + (warnings * 5) + (bans * 10)
+    else:
+        return True
 
 try:
     username = input("Enter Username: ")
@@ -17,7 +19,9 @@ except ValueError:
 else:
     # This block ONLY runs if no exception occurred above
     try:
-        score = calculate_risk(warnings, reports, bans)
+        validation = validate_user_data(reports, warnings, bans)
+        if validation:
+            score = calculate_risk(warnings, reports, bans)
         print(f"\n{username}")
         print(f"Reports: {reports} | Warnings: {warnings} | Bans: {bans}")
         print(f"{username}'s Risk score: {score}")
