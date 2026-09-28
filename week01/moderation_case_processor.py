@@ -1,4 +1,5 @@
 import json
+from day07_risk_utils import classify_risk, calculate_risk
 
 with open("week01/moderation_cases.json", "r") as file:
     users = json.load(file)
@@ -6,32 +7,24 @@ with open("week01/moderation_cases.json", "r") as file:
 def validate_case(case):
     if (case["warnings"] < 0 or case["reports"] < 0 or case["bans"] < 0):
         raise ValueError("Values cannot be negative.")
-    if case["username"] == "":
-        raise ValueError("Username cannot be empty.")
+    if not case.get("username"):
+        raise ValueError("Username cannot be empty or missing.")
     else:
         return True
 
-def calculate_risk(user):
-     return user['reports'] + (user['warnings'] * 5) + (user['bans'] * 10)
-
-def classify_risk(score):
-    if score <= 25:
-        return "LOW"
-    elif score <= 50:
-        return "MEDIUM"
-    elif score <= 75:
-        return "HIGH"
-    else:
-        return "CRITICAL"
 
 results = []
 
 for user in users:
     try:
         if validate_case(user):
-            risk_score = calculate_risk(user)
+            risk_score = calculate_risk(user["reports"], user["warnings"], user["bans"])
             risk_level = classify_risk(risk_score)
-            print(f"User: {user["username"]}\nRisk Score: {risk_score}\nRisk Level: {risk_level}\n")
+            print(
+                f"User: {user['username']}\n"
+                f"Risk Score: {risk_score}\n"
+                f"Risk Level: {risk_level}\n"
+            )
             user_results = {
                     "id": user["id"],
                     "username": user["username"],
@@ -40,7 +33,7 @@ for user in users:
                 }
             results.append(user_results)
     except ValueError as e:
-        print(f"Skipping profile for {user.get('username', 'Unknown')} due to error: {e}")
+        print(f"Skipping profile for user ID:{user.get('id', 'Unknown')} due to error: {e}")
 
 with open("week01/moderation_results.json", "w") as outfile:
     json.dump(results, outfile, indent=4)

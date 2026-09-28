@@ -3,7 +3,7 @@
 #3 - its better cuz we know what we are controlling/testing instead of bare expect and masking unknown bugs and errors with no clear indication of error and over writing the error.
 #4 - Valueerror means the value is incorrect but data type is correct like expecting number but user passing abc & index error can be like asking for 10 item in the while having only 5 items in a list.
 #5 - finally block always runs in the last whether try/except pass or fail.
-#6 - instead of whole program running completely even though it detected the error raise forcefully stops program with message of error we encountered.
+#6 - raise deliberately creates/raises an exception. If the exception is caught, the program can continue through the handler; otherwise execution stops with an error.
 #7 - we need to validate data before running the process to check whether data itself is correct instead of false processing.
 #8 - python module is a whole file ending with file type .py
 #9 - import fetches the file of the files content we need instead of writing the again in the current file.
