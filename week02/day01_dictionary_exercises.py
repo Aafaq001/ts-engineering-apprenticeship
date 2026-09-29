@@ -17,7 +17,7 @@ user["banned"] = True
 risk_score = calculate_risk(user["reports"], user["warnings"], user["bans"])
 user["risk_score"] = risk_score
 user.get("email")
-print(f"Keys: {user.keys}")
-print(f"Values: {user.values}")
+print(f"Keys: {user.keys()}")
+print(f"Values: {user.values()}")
 for key, value in user.items():
     print(f"Key: {key} -> Value: {value}")

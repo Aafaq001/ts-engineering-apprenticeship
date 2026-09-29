@@ -7,7 +7,7 @@ users = [
 ]
 
 users.append("omar_builder")
-user = users.remove("luna_writer")
+users.remove("luna_writer")
 users.insert(1, "john_codes")
 
 print(f"{users}")
