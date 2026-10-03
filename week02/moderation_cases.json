@@ -76,7 +76,6 @@
         "username": "sofia_codes",
         "country": "Spain",
         "reports": 13,
-        "warnings": 3,
         "bans": 1,
         "banned": false
     },
@@ -126,9 +125,53 @@
         "banned": false
     },
     {
-        "id": 14,
+        "id": 15,
         "username": "jay_jay",
         "country": "Australia",
+        "reports": 25,
+        "warnings": 10,
+        "bans": 2,
+        "banned": true
+    },
+    {
+        "id": 16,
+        "username": "ria_payton",
+        "country": "France",
+        "reports": 4,
+        "warnings": 1,
+        "bans": 0,
+        "banned": false
+    },
+    {
+        "id": 17,
+        "username": "imi_imi",
+        "country": "Japan",
+        "reports": 18,
+        "warnings": 6,
+        "bans": 2,
+        "banned": true
+    },
+    {
+        "id": 18,
+        "username": "",
+        "country": "Japan",
+        "reports": 13,
+        "warnings": 8,
+        "bans": 3,
+        "banned": true
+    },
+    {
+        "id": 19,
+        "country": "Pakistan",
+        "reports": 10,
+        "warnings": 3,
+        "bans": 0,
+        "banned": false
+    },
+    {
+        "id": 20,
+        "username": "jay_jay",
+        "country": "",
         "reports": 25,
         "warnings": 10,
         "bans": 2,

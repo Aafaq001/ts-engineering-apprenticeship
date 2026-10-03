@@ -1,4 +1,4 @@
-from week01.day07_risk_utils import calculate_risk
+from risk_utils import calculate_risk
 import json
 
 with open("week01/moderation_cases.json", "r") as file:
