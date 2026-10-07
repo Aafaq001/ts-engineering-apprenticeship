@@ -3,15 +3,14 @@ with open("week02/moderation_cases.json", "r") as f:
     users = json.load(f)
 
 def validate_user_data(user):
-    # 1. Define required keys
     required_fields = ["username", "country", "reports", "warnings", "bans"]
     
-    # 2. Check for missing fields
+    #Check for missing fields
     for field in required_fields:
         if field not in user:
             raise ValueError(f"Missing required field: {field}")
             
-    # 3. Validate rules: username must not be empty string or non-string
+    # Validate rules: username must not be empty string or non-string
     if not isinstance(user.get("username"), str) or not user.get("username").strip():
         raise ValueError("username must not be empty")
         

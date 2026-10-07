@@ -1,9 +1,12 @@
 def validate_user_data(user):
     """
-    check if user's data is valid or not across all users 
+    Check if a user's data contains all required keys and is valid.
     
+    Args:
+        user (dict): The user data dictionary containing profile details.
+        
     Returns:
-        True if data is valid else False    
+        bool: True if the user data is valid, False otherwise.   
     """
 
 def calculate_risk(reports, warnings, bans):

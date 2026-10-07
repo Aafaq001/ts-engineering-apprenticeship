@@ -34,22 +34,25 @@ def count_high_risk_users(users):
 
 
 def find_highest_risk_user(users):
-    
-    highest_score = -1
-    highest_risk_user = None
+
     for user in users:
         score = calculate_risk(user["reports"], user["warnings"], user["bans"])
-        if score > highest_score:
-            highest_score = score
-            highest_risk_user = user["username"]
-    highest_risk = {"hru" : highest_risk_user, "hs" : highest_score}
+        if score > highest_risk["highest_score"]:
+            highest_risk["highest_score"] = score
+            highest_risk["highest_risk_user"] = user["username"]
+            highest_risk["id"] = user["id"]
+            
     return highest_risk
 
+highest_risk = {
+        "highest_score": -1,
+        "highest_risk_user": "None"
+}
 
 highest_risk = find_highest_risk_user(users)
 
 print(f"Min: {find_min(numbers)}")
 print(f"Max: {find_max(numbers)}")
 print(f"High risk count: {count_high_risk_users(users)}")
-print(f"Highest risk user: {highest_risk["hru"]}")
-print(f"Highest risk score: {highest_risk["hs"]}")
+print(f"Highest risk user: {highest_risk["highest_risk_user"]}")
+print(f"Highest risk score: {highest_risk["highest_score"]}")
