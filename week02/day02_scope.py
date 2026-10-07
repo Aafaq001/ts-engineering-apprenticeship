@@ -9,10 +9,10 @@ print(x)
 
 risk_score = 0
 
-def calculate():
-    global risk_score
+def calculate(risk_score):
+    risk_score
     risk_score = 50
     return risk_score
 
-print(calculate())
+print(calculate(risk_score))
 

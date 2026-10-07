@@ -42,16 +42,16 @@ invalid_users = 0
 
 low_risks = medium_risks = high_risks = 0
 risks = []
-highest_risk_score = total_score = avg_score = 0
+total_score = avg_score = 0
 
-def find_highest_risk_user(score, name):
-    
-    highest_score = -1
-    highest_risk_user = None
+def find_highest_risk_user(score, name, highest_score, highest_risk_user):
     if score > highest_score:
         highest_score = score
         highest_risk_user = name
-    return highest_risk_user,highest_score
+    return highest_score, highest_risk_user
+
+highest_score = -1
+highest_risk_user = None
 
 for user in users:
     total_users += 1
@@ -62,7 +62,7 @@ for user in users:
             level = classify_risk(score)
             risks.append(level)
             total_score = total_score + score
-            highest_risk = find_highest_risk_user(score, user["username"])
+            highest_score, highest_risk_user = find_highest_risk_user(score, user["username"], highest_score, highest_risk_user)
             
 
             message = generate_risk_message(
@@ -83,10 +83,11 @@ for risk in risks:
     else:
         high_risks += 1
 
-avg_score = round(total_score / valid_users)
+if total_score is not 0:
+    avg_score = round(total_score / valid_users)
 
 
 print(f"\nUSERS\nTotal Users:{total_users}\nValid Users:{valid_users}\nInvalid Users: {invalid_users}\n")
 print(f"RISKS\nLow Risks: {low_risks}\nMedium Risks: {medium_risks}\nHigh Risks: {high_risks}\n")
-print(f"SCORES\nHighest Risk Score: {highest_risk[1]}\nAverage Risk Score: {avg_score}\n")
-print(f"Highest Risk User:\nHighest Risk User: {highest_risk[0]}\nRisk Score {highest_risk[1]}")
+print(f"SCORES\nHighest Risk Score: {highest_score}\nAverage Risk Score: {avg_score}\n")
+print(f"Highest Risk User:\nHighest Risk User: {highest_risk_user}\nRisk Score {highest_score}")

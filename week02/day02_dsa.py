@@ -9,18 +9,18 @@ with open("week02/moderation_cases.json", "r") as f:
 numbers = [4, 8, 2, 15, 7]
 
 def find_max(numbers):
-    max = numbers[0]
+    current_max = numbers[0]
     for number in numbers:
-        if number > max:
-            max = number
-    return max
+        if number > current_max:
+            current_max = number
+    return current_max
 
 def find_min(numbers):
-    min = numbers[0]
+    current_min = numbers[0]
     for number in numbers:
-        if number < min:
-            min = number
-    return min
+        if number < current_min:
+            current_min = number
+    return current_min
 
 
 def count_high_risk_users(users):
@@ -42,10 +42,14 @@ def find_highest_risk_user(users):
         if score > highest_score:
             highest_score = score
             highest_risk_user = user["username"]
-    return highest_risk_user,highest_score
+    highest_risk = {"hru" : highest_risk_user, "hs" : highest_score}
+    return highest_risk
 
+
+highest_risk = find_highest_risk_user(users)
 
 print(f"Min: {find_min(numbers)}")
 print(f"Max: {find_max(numbers)}")
 print(f"High risk count: {count_high_risk_users(users)}")
-print(f"Highest risk user: {find_highest_risk_user(users)}")
+print(f"Highest risk user: {highest_risk["hru"]}")
+print(f"Highest risk score: {highest_risk["hs"]}")
