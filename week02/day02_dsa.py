@@ -41,7 +41,7 @@ def find_highest_risk_user(users):
         score = calculate_risk(user["reports"], user["warnings"], user["bans"])
         if score > highest_score:
             highest_score = score
-        highest_risk_user = user["username"]
+            highest_risk_user = user["username"]
     return highest_risk_user,highest_score
 
 
