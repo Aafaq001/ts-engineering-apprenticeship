@@ -48,7 +48,7 @@ def find_highest_risk_user(users):
             highest_score = score
             highest_risk_user = user
 
-    return highest_risk_user, highest_score
+    return highest_risk_user
 
 
 highest_risk_user, score = find_highest_risk_user(users)
@@ -56,4 +56,4 @@ highest_risk_user, score = find_highest_risk_user(users)
 print(f"Min: {find_min(numbers)}")
 print(f"Max: {find_max(numbers)}")
 print(f"High risk count: {count_high_risk_users(users)}")
-print(f"Highest risk user: \n{highest_risk_user["id"]}: {highest_risk_user["username"]} -> {score}")
+print(f"Highest risk user: \n{highest_risk_user["id"]}: {highest_risk_user["username"]}")
