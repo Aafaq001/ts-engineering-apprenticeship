@@ -6,7 +6,7 @@ def validate_user_data(user):
         user (dict): The user data dictionary containing profile details.
         
     Returns:
-        bool: True if the user data is valid, False otherwise.   
+        True if the user data is valid, ValueError otherwise.   
     """
 
 def calculate_risk(reports, warnings, bans):
@@ -27,10 +27,12 @@ def classify_risk(score):
     Classify score into risk level
 
     Args:
-        score: Get against each user from calculate_risk(reports, warnings, bans)
+        if score >= 50 risk level is high 
+        else if score is between 25 to 49 risk level is medium
+        else risk level is low
 
     Returns:
-        Risk Level, Low, Medium, High or Critical
+        Risk Level, Low, Medium, High
     """
 
 def generate_risk_message(name, score, level):
@@ -39,7 +41,7 @@ def generate_risk_message(name, score, level):
     
     Args:
         name: Username.
-        Score: Score calculated from calculate_risk(reports, warnings, bans).
+        score: score calculated from calculate_risk(reports, warnings, bans).
         level: Risk level calculated from classify_risk(score).
     
     Returns:
